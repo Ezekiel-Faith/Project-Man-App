@@ -5,8 +5,6 @@ import ProjectsSidebar from './components/ProjectsSidebar';
 import NewProject from './components/NewProject';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <main className='h-screen my-8 flex gap-8'>
       <ProjectsSidebar />
