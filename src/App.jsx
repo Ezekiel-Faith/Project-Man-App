@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <main>
+    <main className='h-screen my-8'>
       <ProjectsSidebar />
     </main>
   );
