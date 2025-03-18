@@ -33,8 +33,6 @@ function App() {
     });
   }
 
-  console.log(projectState);
-
   let content;
   if (projectState.selectedProjectID === null) {
     content = <NewProject onAdd={handleAddProject} />;
