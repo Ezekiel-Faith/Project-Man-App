@@ -1,15 +1,34 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import ProjectsSidebar from './components/ProjectsSidebar';
 import NewProject from './components/NewProject';
 import NoProjectSelected from './components/NoProjectSelected';
 
 function App() {
+  const [projectState, setProjectState] = useState({
+    selectedProjectID: undefined,
+    projects: [],
+  });
+
+  function handleStartAddProject() {
+    setProjectState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectID: null,
+      };
+    });
+  }
+
+  let content;
+  if (projectState.selectedProjectID === null) {
+    content = <NewProject />;
+  } else if (projectState.selectedProjectID === undefined) {
+    content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
+  }
+
   return (
     <main className='h-screen my-8 flex gap-8'>
-      <ProjectsSidebar />
-      <NoProjectSelected />
+      <ProjectsSidebar onStartAddProject={handleStartAddProject} />
+      {content}
     </main>
   );
 }
